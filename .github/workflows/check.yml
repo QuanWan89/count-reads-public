@@ -1,0 +1,22 @@
+name: check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v7.0.1
+
+      - name: ShellCheck the scripts
+        run: shellcheck count_reads.sh tests/test_count_reads.sh
+
+      - name: Run the test
+        run: bash tests/test_count_reads.sh
