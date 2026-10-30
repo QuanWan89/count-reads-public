@@ -5,7 +5,7 @@
 set -euo pipefail
 
 file=${1:?usage: count_reads.sh <reads.fastq | reads.fastq.gz>}
-if [ ! -r $file ]; then
+if [ ! -r "$file" ]; then
     echo "error: cannot read" "$file" >&2
     exit 66
 fi
